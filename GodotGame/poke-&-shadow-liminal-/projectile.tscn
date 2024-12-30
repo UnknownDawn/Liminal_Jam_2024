@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4ee5meol3ljh"]
+
+[ext_resource type="Texture2D" uid="uid://dt0q4u34j4cuj" path="res://icon.svg" id="1_6r2gk"]
+[ext_resource type="Script" path="res://Projectile.gd" id="2_1e7ir"]
+[ext_resource type="Texture2D" uid="uid://cau75c7bdi013" path="res://Spotlight.tres" id="3_niisd"]
+
+[node name="Projectile" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("sprite")]
+modulate = Color(0.53703, 0.368104, 2.88785e-07, 1)
+position = Vector2(0, -2.38419e-07)
+scale = Vector2(0.251048, 0.0991211)
+texture = ExtResource("1_6r2gk")
+script = ExtResource("2_1e7ir")
+sprite = NodePath(".")
+
+[node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
+position = Vector2(3.9833, -10.0887)
+scale = Vector2(13.1947, 33.4187)
+texture = ExtResource("3_niisd")

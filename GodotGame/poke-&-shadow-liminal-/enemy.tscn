@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://w8rj7216ahce"]
+
+[ext_resource type="Script" path="res://enemyNavigation.gd" id="1_n48lo"]
+[ext_resource type="Texture2D" uid="uid://dt0q4u34j4cuj" path="res://icon.svg" id="2_7qn0l"]
+[ext_resource type="Texture2D" uid="uid://cmbgvcfwk1b1y" path="res://Excalamation.png" id="3_wxday"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qn5xa"]
+radius = 276.002
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(725, -254)
+script = ExtResource("1_n48lo")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.324123, 0.311146)
+texture = ExtResource("2_7qn0l")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_qn5xa")
+
+[node name="Supprise" type="Sprite2D" parent="."]
+position = Vector2(0, -48)
+scale = Vector2(0.248554, 0.248554)
+texture = ExtResource("3_wxday")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

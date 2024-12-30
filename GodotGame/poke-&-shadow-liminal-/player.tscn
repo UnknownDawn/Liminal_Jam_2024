@@ -1,0 +1,108 @@
+[gd_scene load_steps=9 format=3 uid="uid://dda3yrhh2hbv7"]
+
+[ext_resource type="Texture2D" uid="uid://cgltrdffvhpd" path="res://PlayerPlaceHolder.png" id="2_30sko"]
+[ext_resource type="Script" path="res://character_body_2d.gd" id="2_821rx"]
+[ext_resource type="Texture2D" uid="uid://bteav3dk1xl5i" path="res://Flashlight.png" id="3_3ugqd"]
+
+[sub_resource type="Animation" id="Animation_qdrv0"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D/PlayerSprite:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(2.56, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody2D/PlayerSprite:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-35.84, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_4j062"]
+resource_name = "bob"
+length = 0.2
+loop_mode = 2
+step = 0.01
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D/PlayerSprite:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(2.56, -0.25, 0, 0.25, 0, 2.56, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.19)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody2D/PlayerSprite:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-35.84, -0.25, 0, 0.12, -4.16, -49, -0.07, -3, 0.03, -21.98),
+"times": PackedFloat32Array(0, 0.2)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0unbm"]
+_data = {
+"RESET": SubResource("Animation_qdrv0"),
+"bob": SubResource("Animation_4j062")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q0w5b"]
+radius = 76.8427
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sf2g4"]
+radius = 61.4933
+
+[node name="Player" type="Node2D"]
+
+[node name="PlayerBobber" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0unbm")
+}
+blend_times = [&"RESET", &"bob", 0.3, &"bob", &"RESET", 0.7]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+scale = Vector2(0.390625, 0.390625)
+script = ExtResource("2_821rx")
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D" groups=["player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+position = Vector2(4.76837e-07, -5.12)
+shape = SubResource("CircleShape2D_q0w5b")
+
+[node name="PlayerSprite" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(2.56, -35.84)
+scale = Vector2(7.41483, 7.41483)
+texture = ExtResource("2_30sko")
+vframes = 3
+
+[node name="FlashlightRotationPoint" type="Marker2D" parent="CharacterBody2D/PlayerSprite"]
+position = Vector2(4.14305, 5.17881)
+scale = Vector2(0.283071, 0.283071)
+
+[node name="PointLight2D" type="PointLight2D" parent="CharacterBody2D/PlayerSprite/FlashlightRotationPoint"]
+position = Vector2(276.865, -15.8557)
+rotation = 1.5708
+scale = Vector2(2.16739, 2.37155)
+energy = 0.5
+texture = ExtResource("3_3ugqd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_sf2g4")
