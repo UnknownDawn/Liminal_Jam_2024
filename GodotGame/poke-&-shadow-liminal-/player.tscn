@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dda3yrhh2hbv7"]
+[gd_scene load_steps=10 format=3 uid="uid://dda3yrhh2hbv7"]
 
 [ext_resource type="Texture2D" uid="uid://cgltrdffvhpd" path="res://PlayerPlaceHolder.png" id="2_30sko"]
 [ext_resource type="Script" path="res://character_body_2d.gd" id="2_821rx"]
 [ext_resource type="Texture2D" uid="uid://bteav3dk1xl5i" path="res://Flashlight.png" id="3_3ugqd"]
+[ext_resource type="Texture2D" uid="uid://dt0q4u34j4cuj" path="res://icon.svg" id="4_ofch2"]
 
 [sub_resource type="Animation" id="Animation_qdrv0"]
 length = 0.001
@@ -81,6 +82,11 @@ blend_times = [&"RESET", &"bob", 0.3, &"bob", &"RESET", 0.7]
 scale = Vector2(0.390625, 0.390625)
 script = ExtResource("2_821rx")
 
+[node name="Icon" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(84.48, -15.36)
+scale = Vector2(1.0905, 0.260396)
+texture = ExtResource("4_ofch2")
+
 [node name="Area2D" type="Area2D" parent="CharacterBody2D" groups=["player"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
@@ -98,6 +104,7 @@ position = Vector2(4.14305, 5.17881)
 scale = Vector2(0.283071, 0.283071)
 
 [node name="PointLight2D" type="PointLight2D" parent="CharacterBody2D/PlayerSprite/FlashlightRotationPoint"]
+visible = false
 position = Vector2(276.865, -15.8557)
 rotation = 1.5708
 scale = Vector2(2.16739, 2.37155)

@@ -25,6 +25,7 @@ func _physics_process(delta):
 	angle_to_mouse = self.get_angle_to(get_global_mouse_position())
 
 	$PlayerSprite/FlashlightRotationPoint.look_at(get_global_mouse_position())
+	$Icon.look_at(get_global_mouse_position())
 
 
 	#MOVEMENT SECTION
