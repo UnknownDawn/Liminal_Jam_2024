@@ -104,12 +104,13 @@ position = Vector2(4.14305, 5.17881)
 scale = Vector2(0.283071, 0.283071)
 
 [node name="PointLight2D" type="PointLight2D" parent="CharacterBody2D/PlayerSprite/FlashlightRotationPoint"]
-visible = false
-position = Vector2(276.865, -15.8557)
+position = Vector2(9.75735, -6.09836)
 rotation = 1.5708
 scale = Vector2(2.16739, 2.37155)
 energy = 0.5
+shadow_enabled = true
 texture = ExtResource("3_3ugqd")
+offset = Vector2(0.745, -122.195)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("CircleShape2D_sf2g4")

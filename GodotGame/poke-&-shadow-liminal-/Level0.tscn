@@ -1,27 +1,31 @@
-[gd_scene load_steps=9 format=3 uid="uid://c26l22o4iba7"]
+[gd_scene load_steps=8 format=3 uid="uid://c26l22o4iba7"]
 
 [ext_resource type="PackedScene" uid="uid://btxect67f0byw" path="res://player_camera.tscn" id="1_tagye"]
 [ext_resource type="PackedScene" uid="uid://dda3yrhh2hbv7" path="res://player.tscn" id="2_5s8aa"]
 [ext_resource type="PackedScene" uid="uid://w8rj7216ahce" path="res://enemy.tscn" id="4_0go8w"]
-[ext_resource type="Texture2D" uid="uid://dm33crdao8lnk" path="res://Small_wall.png" id="5_gna6r"]
+[ext_resource type="Texture2D" uid="uid://dt0q4u34j4cuj" path="res://icon.svg" id="5_cw6hl"]
 [ext_resource type="Texture2D" uid="uid://cau75c7bdi013" path="res://Spotlight.tres" id="5_ogpfx"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5d262"]
+polygon = PackedVector2Array(-103, 231, -101, -2, 663, -5, 659, 225)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_3t8hc"]
 vertices = PackedVector2Array(854.102, -400.883, 846.102, 366.023, 662, 226, 667, -5, 673.117, -188.047, -240.828, 368.969, -98, 235, -104, -4, -229.156, -332.641, -110.07, -183.953, 1275, -16.8281, 1113.94, -14.1563, 1111.95, -404.133, 1275, -522.953, 669.117, -520.039, -109.063, -328.352)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(2, 1, 5, 6), PackedInt32Array(7, 6, 5, 8, 9), PackedInt32Array(10, 11, 12, 13), PackedInt32Array(14, 13, 12, 0), PackedInt32Array(4, 14, 0), PackedInt32Array(9, 4, 3, 7), PackedInt32Array(9, 8, 15)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-251, 379, -239, -343, -99, -338, -100, -194, 663, -198, 659, -530, 1285, -533, 1285, -7, 1104, -4, 1102, -394, 864, -391, 856, 376)])
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_op1oc"]
-texture = ExtResource("5_gna6r")
-texture_region_size = Vector2i(50, 50)
-10:3/size_in_atlas = Vector2i(2, 6)
-10:3/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_6q5sb"]
-tile_size = Vector2i(50, 50)
-sources/0 = SubResource("TileSetAtlasSource_op1oc")
-
 [node name="Node2D" type="Node2D"]
+
+[node name="Icon3" type="Sprite2D" parent="."]
+modulate = Color(0.20871, 0.20871, 0.20871, 1)
+position = Vector2(310.5, -15.5)
+scale = Vector2(11.8047, 7.42969)
+texture = ExtResource("5_cw6hl")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(-1, 1)
+occluder = SubResource("OccluderPolygon2D_5d262")
+occluder_light_mask = 7
 
 [node name="PlayerCamera" parent="." instance=ExtResource("1_tagye")]
 
@@ -58,6 +62,14 @@ carve_navigation_mesh = true
 color = Color(0.942823, 0.942823, 0.942823, 1)
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_6q5sb")
 format = 2
-layer_0/tile_data = PackedInt32Array(-327682, 655360, 3, -327681, 655360, 3, -393216, 655360, 3, -393215, 655360, 3, -393214, 655360, 3, -393213, 655360, 3, -393212, 655360, 3, -393211, 655360, 3, -393210, 655360, 3, -393209, 655360, 3, -393208, 655360, 3, -393207, 655360, 3, -393206, 655360, 3, -393205, 655360, 3, -393204, 655360, 3, 196606, 655360, 3, 196607, 655360, 3, 131072, 655360, 3, 131073, 655360, 3, 131074, 655360, 3, 131075, 655360, 3, 131076, 655360, 3, 131077, 655360, 3, 131078, 655360, 3, 131079, 655360, 3, 131080, 655360, 3, 131081, 655360, 3, 131082, 655360, 3, 131083, 655360, 3, 131084, 655360, 3, -655348, 655360, 3, -851955, 655360, 3, -851954, 655360, 3, -851953, 655360, 3, -851952, 655360, 3, -851951, 655360, 3, -851950, 655360, 3, -851949, 655360, 3, -851948, 655360, 3, -851947, 655360, 3, -851946, 655360, 3, -851945, 655360, 3, -851944, 655360, 3, -851943, 655360, 3, -851956, 655360, 3, -720884, 655360, 3, -393199, 655360, 3, -393198, 655360, 3, -393197, 655360, 3, -393196, 655360, 3, -393195, 655360, 3, -65519, 655360, 3, -65518, 655360, 3, -65517, 655360, 3, -65516, 655360, 3, -65515, 655360, 3, 262161, 655360, 3, 262162, 655360, 3, 262163, 655360, 3, 262164, 655360, 3, 262165, 655360, 3, 524305, 655360, 3, 524306, 655360, 3, 524307, 655360, 3, 524308, 655360, 3, 524309, 655360, 3, 524310, 655360, 3, 655355, 655360, 3, 655356, 655360, 3, 655357, 655360, 3, 655358, 655360, 3, 655359, 655360, 3, 589824, 655360, 3, 589825, 655360, 3, 589826, 655360, 3, 589827, 655360, 3, 589828, 655360, 3, 589829, 655360, 3, 589830, 655360, 3, 589831, 655360, 3, 589832, 655360, 3, 589833, 655360, 3, 589834, 655360, 3, 589835, 655360, 3, 589836, 655360, 3, 589837, 655360, 3, 589838, 655360, 3, 589839, 655360, 3, 589840, 655360, 3, 589841, 655360, 3, 393210, 655360, 3, 393209, 655360, 3, 393208, 655360, 3, 393207, 655360, 3, 393206, 655360, 3, 65530, 655360, 3, 65529, 655360, 3, 65528, 655360, 3, 65527, 655360, 3, 65526, 655360, 3, -262150, 655360, 3, -262151, 655360, 3, -262152, 655360, 3, -262153, 655360, 3, -262154, 655360, 3, -524292, 655360, 3, -524293, 655360, 3, -524294, 655360, 3, -524295, 655360, 3, -524296, 655360, 3, -524297, 655360, 3, -524298, 655360, 3)
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(282.5, 110.5)
+scale = Vector2(6.03906, 1.80469)
+texture = ExtResource("5_cw6hl")
+
+[node name="Icon2" type="Sprite2D" parent="."]
+position = Vector2(-296, 26)
+scale = Vector2(1, 5.57813)
+texture = ExtResource("5_cw6hl")
